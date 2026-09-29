@@ -17,7 +17,7 @@ U korijenskoj mapi projekta pokrenite:
 py -m venv .venv
 .venv\Scripts\Activate.ps1
 python -m pip install -r requirements.txt
-python app.py
+python src\app.py
 ```
 
 Na macOS-u ili Linuxu aktivirajte okruženje naredbom `source .venv/bin/activate`.
@@ -27,13 +27,13 @@ Na macOS-u ili Linuxu aktivirajte okruženje naredbom `source .venv/bin/activate
 Pokrenite PowerShell u projektu i izvršite:
 
 ```powershell
-.\build.ps1
+.\packaging\build.ps1
 ```
 
 Ako PowerShell blokira skripte, nakon instalacije ovisnosti pokrenite izravno:
 
 ```powershell
-.\venv\Scripts\python.exe -m PyInstaller --noconfirm --clean --onefile --windowed --name Mp3Konverter --collect-all imageio_ffmpeg app.py
+.\venv\Scripts\python.exe -m PyInstaller --noconfirm --clean --onefile --windowed --name Mp3Konverter --collect-all imageio_ffmpeg --paths src --distpath dist --workpath build --specpath packaging src\app.py
 ```
 
 Skripta instalira aplikacijske i PyInstaller ovisnosti u lokalno `venv` okruženje i izrađuje jedinstveni izvršni program `dist\Mp3Konverter.exe`. FFmpeg iz paketa `imageio-ffmpeg` uključuje se u aplikaciju. Za distribuciju kopirajte `.exe` na Windows računalo; prvo pokretanje može potrajati dok se sadržaj aplikacije raspakira.
@@ -50,8 +50,6 @@ Podržani ulazni formati: MP4, M4V, MOV, MKV, AVI, WEBM i FLV. Dostupni bitratei
 
 ## Struktura projekta
 
-- `app.py` pokreće aplikaciju i provjerava dostupnost FFmpeg-a.
-- `frontend.py` sadrži PyQt6 sučelje i pozadinsku nit za konverziju.
-- `backend.py` upravlja FFmpeg-om, napretkom i izlaznim putanjama.
+- `src/` sadrži aplikaciju, PyQt6 sučelje i logiku konverzije.
 - `requirements.txt` navodi pakete potrebne za pokretanje.
-- `requirements-build.txt` i `build.ps1` omogućuju izradu Windows `.exe` datoteke.
+- `packaging/` sadrži build skriptu, PyInstaller postavke i build ovisnosti.
