@@ -40,7 +40,7 @@ Skripta instalira aplikacijske i PyInstaller ovisnosti u lokalno `venv` okružen
 
 Trenutno izrađena datoteka nalazi se na `dist\Mp3Konverter.exe` (oko 66 MB).
 
-Nakon objave, preuzmite gotovu aplikaciju s kartice **Releases** u ovom GitHub repozitoriju. Izdanje sadrži `Mp3Konverter.exe`.
+Preuzmite gotovu aplikaciju iz [izdanja v1.0.0](https://github.com/Filip1444/MP3-konverter-pyqt/releases/tag/v1.0.0). Izdanje sadrži `Mp3Konverter.exe`.
 
 ## Korištenje
 
